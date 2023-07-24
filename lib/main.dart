@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'ImageFullScreenWapper.dart';
+import 'package:full_screen_image/full_screen_image.dart';
+import 'package:full_screen_image_view_flutter/image_view_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ImageViewPage(),
     );
   }
 }
@@ -57,12 +57,22 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Image.network(imageUrl),
         dark: true,
       );*/
-      Navigator.push(
+      /*Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) =>
                 FullScreenPage(dark: false, child: Image.network(imageUrl)),
-          ));
+          ));*/
+      FullScreenWidget(
+        disposeLevel: DisposeLevel.Low,
+        child: Hero(
+          tag: "customTag",
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(imageUrl),
+          ),
+        ),
+      );
     });
   }
 
