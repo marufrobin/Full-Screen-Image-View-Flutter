@@ -50,22 +50,14 @@ class ImageViewPage extends StatelessWidget {
         disposeLevel: DisposeLevel.High,
         backgroundColor: Colors.grey,
         backgroundIsTransparent: false,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              child: IconButton(onPressed: () {}, icon: Icon(Icons.close)),
+        child: Center(
+          child: Hero(
+            tag: "nonTransparent",
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(imageUrl),
             ),
-            Center(
-              child: Hero(
-                tag: "nonTransparent",
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(imageUrl),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       );
 
@@ -77,7 +69,7 @@ class ImageViewPage extends StatelessWidget {
           title: Text('Full screen widget example'),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(60.0),
           child: nonTransparentWidget(),
         ),
       ),
