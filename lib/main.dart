@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => FullScreenPage(
-                          dark: false,
+                          dark: true,
                           child: Image.network(imageUrl),
                         ),
                       ));

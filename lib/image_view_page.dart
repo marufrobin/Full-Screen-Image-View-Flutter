@@ -66,6 +66,11 @@ class ImageViewPage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          leading: BackButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
           title: Text('Full screen widget example'),
         ),
         body: Padding(
