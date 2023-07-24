@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:full_screen_image/full_screen_image.dart';
 import 'package:full_screen_image_view_flutter/image_view_page.dart';
+
+import 'ImageFullScreenWapper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: true,
       ),
-      home: ImageViewPage(),
+      home: MyHomePage(
+        title: 'Image Testing',
+      ),
     );
   }
 }
@@ -63,16 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context) =>
                 FullScreenPage(dark: false, child: Image.network(imageUrl)),
           ));*/
-      FullScreenWidget(
-        disposeLevel: DisposeLevel.Low,
-        child: Hero(
-          tag: "customTag",
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.network(imageUrl),
-          ),
-        ),
-      );
     });
   }
 
@@ -120,6 +113,29 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            SizedBox(height: 30),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ImageViewPage(),
+                      ));
+                },
+                child: Text("Image View Package")),
+            SizedBox(height: 30),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FullScreenPage(
+                          dark: false,
+                          child: Image.network(imageUrl),
+                        ),
+                      ));
+                },
+                child: Text("Custom full screen view")),
           ],
         ),
       ),
